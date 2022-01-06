@@ -1,0 +1,98 @@
+:root {
+    /*Primary*/
+    --blue: hsl(246, 80%, 60%);
+    --lightOrange:hsl(15, 100%, 70%); /*work*/
+    --softBlue:hsl(195, 74%, 62%); /*play*/
+    --lightRed:hsl(348, 100%, 68%); /*study*/
+    --limeGreen:hsl(145, 58%, 55%); /*exercise*/
+    --violet:hsl(264, 64%, 52%); /*social*/
+    --softOrange:hsl(43, 84%, 65%); /*self care*/
+
+    /*Neutral*/
+    --veryDarkBlue:hsl(226, 43%, 10%);
+    --darkBlue:hsl(235, 46%, 20%);
+    --desaturatedBlue: hsl(235, 45%, 61%);
+    --paleBlue:hsl(236, 100%, 87%);
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 18px;
+    font-family: 'Rubik', sans-serif;
+    background-color: var(--veryDarkBlue);
+}
+
+.tablero {
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    grid-template-rows: repeat(3,1fr);
+    gap: 30px;
+}
+
+.estadisticas {
+    height: 200px;
+    width: 150px;
+    padding: 60px 0;
+    border: 5px solid var(--softBlue);
+}
+
+.estadisticas p {
+    font-size: 20px;
+    color: var(--paleBlue);
+    text-align: center;
+    padding-top: 5px;
+}
+
+.molde {
+    height: 200px;
+    width: 150px;
+    padding: 65px 0;
+    border-radius: 15%;
+    background: url(../img/fondoPrincipal.png) center/100% no-repeat #EA6B66;
+}
+
+.molde:hover {
+    outline: 3px solid var(--paleBlue);
+}
+
+.molde p {
+    color: var(--paleBlue);
+    text-align: center;
+    display: none;
+}
+
+.numero {
+    font-size: 50px;
+}
+
+.nombre {
+    font-size: 20px;
+}
+
+.active {
+    background: #1f87a1;
+}
+
+.active p {
+    display: block;
+}
+
+.resuelta {
+    background: #1f87a1;
+}
+
+.resuelta p {
+    display: block;
+}
+
+@media (max-width: 980px) {
+    body {
+        display: block;
+        height: 100%;
+        padding: 30px 0;
+    }
+}
+
