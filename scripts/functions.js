@@ -3,7 +3,7 @@ const barajar = () => {
     let aux = 0;
     do {
         for (let i = 0; i < 10; i++) {
-            mano[i+aux] = baraja[i];
+            mano[i+aux] = $baraja[i];
         }
     repite --;
     aux += 10;
@@ -18,15 +18,14 @@ const colocarCartas = () => {
     for (let i = 0; i < tamano; i++) {
         aleatorio = Math.floor(Math.random()*(mano.length));
         seleccion = mano[aleatorio];
-        div.innerHTML = `
-            <div class="molde carta${seleccion.valor}">
-                <p class="numero">${seleccion.valor}</p>
-                <p class="nombre">${seleccion.numero}</p>
-            </div>`
-        fragmento.appendChild(div.content);
+        clone = document.importNode($template.content, true);
+        clone.querySelector(".molde").classList.add(`carta${seleccion.valor}`)
+        clone.querySelector(".numero").innerHTML = seleccion.valor;
+        clone.querySelector(".nombre").innerHTML = seleccion.numero;
+        $fragmento.appendChild(clone);
         mano.splice(aleatorio,1);
     }
-    $tablero.appendChild(fragmento);
+    $tablero.appendChild($fragmento);
 }
 
 const voltearCarta = (molde) => {
@@ -34,6 +33,7 @@ const voltearCarta = (molde) => {
         molde.classList.add("active");
         if (copiaMolde != molde && (molde.classList.contains("resuelta") == false || molde.classList.contains("active") == false)) {
             contador++;
+            copiaMolde = molde;
         }
     }
     if (contador == 2) {

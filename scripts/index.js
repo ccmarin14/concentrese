@@ -1,13 +1,14 @@
-let div = document.createElement("template");
+let clone;
 let mano = [];
 let contador = 0;
 let pares = 0;
 let intentos = 0;
 let copiaMolde;
+const $template = document.querySelector("#template");
 const $tablero = document.querySelector(".tablero");
-const fragmento = document.createDocumentFragment();
+const $fragmento = document.createDocumentFragment();
 const $estadisticas = document.querySelector(".estadisticas");
-const baraja = [
+const $baraja = [
     {
         valor: '0',
         numero: 'cero'
