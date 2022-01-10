@@ -4,10 +4,17 @@ let contador = 0;
 let pares = 0;
 let intentos = 0;
 let copiaMolde;
+let $activas = document.querySelectorAll(".active")
+let voice = new SpeechSynthesisUtterance();
+let jarvis = window.speechSynthesis;
+let textoAvoz;
+let $moldes;
+
 const $template = document.querySelector("#template");
 const $tablero = document.querySelector(".tablero");
 const $fragmento = document.createDocumentFragment();
 const $estadisticas = document.querySelector(".estadisticas");
+const $reset = document.querySelector(".reset");
 const $baraja = [
     {
         valor: '0',
@@ -42,12 +49,9 @@ const $baraja = [
     }
 ]
 
+$tablero.addEventListener("click", voltearCarta);
+$reset.addEventListener("click", restart);
+
 colocarCartas();
-barajar();
 
-const $moldes = document.querySelectorAll(".molde");
-
-$moldes.forEach(molde => {
-    molde.addEventListener("click", function(){voltearCarta(molde)})
-});
 

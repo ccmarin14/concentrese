@@ -28,22 +28,23 @@ const colocarCartas = () => {
     $tablero.appendChild($fragmento);
 }
 
-const voltearCarta = (molde) => {
-    if (contador < 2) {
-        molde.classList.add("active");
-        if (copiaMolde != molde && (molde.classList.contains("resuelta") == false || molde.classList.contains("active") == false)) {
-            contador++;
-            copiaMolde = molde;
-        }
+const voltearCarta = async (e) => {
+    if (contador < 2 && e.target.classList.contains("active") == false && e.target.classList.contains("resuelta") == false) {
+        e.target.classList.add("active");
+        textoAvoz = e.target.children[1].innerHTML;
+        voice.text = textoAvoz;
+        jarvis.speak(voice);
+        contador++;
     }
     if (contador == 2) {
         validar();
-        setTimeout(remover,350);
+        setTimeout(remover,600);
     }
 };
 
 const remover = () => {
-    $moldes.forEach(elemento => {
+    $activas = document.querySelectorAll(".active")
+    $activas.forEach(elemento => {
         elemento.classList.remove("active");
     })
     contador = 0;
@@ -55,9 +56,10 @@ const validar = () => {
     let posicion_dos;
     let carta_uno = "1";
     let carta_dos = "2";
+    $activas = document.querySelectorAll(".active")
     intentos++;
     $estadisticas.children[1].children[0].innerHTML = intentos;
-    $moldes.forEach(elemento => {
+    $activas.forEach(elemento => {
         if (elemento.classList.contains("active")) {
             if (carta_dos == "none") {
                 carta_dos = elemento.classList.item(1);
@@ -72,9 +74,22 @@ const validar = () => {
         posicion++;
     })
     if (carta_uno == carta_dos) {
+        $activas.item(posicion_uno).classList.add("resuelta");
+        $activas.item(posicion_dos).classList.add("resuelta");
         pares ++;
-        $moldes.item(posicion_uno).classList.add("resuelta");
-        $moldes.item(posicion_dos).classList.add("resuelta");
         $estadisticas.children[0].children[0].innerHTML = pares;
     }
+}
+
+const restart = () => {
+    contador = 0;
+    pares = 0;
+    intentos = 0;
+    $estadisticas.children[0].children[0].innerHTML = pares;
+    $estadisticas.children[1].children[0].innerHTML = intentos;
+    $moldes = document.querySelectorAll(".molde");
+    $moldes.forEach(element => {
+        element.outerHTML = "";
+    })
+    colocarCartas();
 }
