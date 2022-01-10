@@ -37,7 +37,7 @@ body {
 }
 
 .estadisticas {
-    height: 200px;
+    height: 180px;
     width: 150px;
     padding: 60px 0;
     border: 5px solid var(--softBlue);
@@ -63,9 +63,9 @@ body {
 }
 
 .molde {
-    height: 200px;
-    width: 150px;
-    padding: 65px 0;
+    height: 180px;
+    width: 140px;
+    padding: 50px 0;
     border-radius: 15%;
     background: url(../img/fondoPrincipal.png) center/100% no-repeat #EA6B66;
     cursor: pointer;
