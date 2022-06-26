@@ -33,6 +33,7 @@ const voltearCarta = async (e) => {
         e.target.classList.add("active");
         textoAvoz = e.target.children[1].innerHTML;
         voice.text = textoAvoz;
+        voice.lang = "es-ES"
         jarvis.speak(voice);
         contador++;
     }
