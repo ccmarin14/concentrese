@@ -22,7 +22,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    padding: .5em;
+    padding: .55em;
     font-family: 'Rubik', sans-serif;
     background-color: var(--veryDarkBlue);
 
